@@ -1,0 +1,13 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel MyBest
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWStructuredBuffer<float3> Result;
+
+[numthreads(32, 32, 1)]
+void MyBest(uint3 id : SV_DispatchThreadID)
+{
+	// TODO: insert actual code here!
+	Result[id.x] = float3(id.x*2, id.y, id.x * id.y /2);
+}
